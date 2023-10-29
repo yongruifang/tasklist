@@ -18,13 +18,19 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
+import { OverdueTasksComponent } from './components/overdue-tasks/overdue-tasks.component'
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddTaskComponent,
+    AllTasksComponent,
+    OverdueTasksComponent
   ],
   imports: [
     BrowserModule,
