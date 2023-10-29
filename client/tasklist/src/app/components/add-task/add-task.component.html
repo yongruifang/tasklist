@@ -1,1 +1,56 @@
-<p>add-task works!</p>
+<div class="centerDiv" layout-fill layout="column" layout-align="center none">
+    <form name="form" (ngSubmit)="f.form.valid && Add()" #f="ngForm" style="height:50%">
+        <div layout="row" layout-align="center none" style="height: 100%">
+            <mat-card style="height: 100%">
+                <mat-card-title style="align-self: center;">添加待办事项</mat-card-title>
+                <mat-card-content>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>输入任务标题</mat-label>
+                            <input matInput placeholder="Title" [(ngModel)]="Title" name="title" #title="ngModel"
+                                required />
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                            <!-- <mat-hint>
+                                <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+                                    <div *ngIf="title.errors?.['required']">
+                                        You must add a title.
+                                    </div>
+                                </div>
+                            </mat-hint> -->
+                            <mat-error
+                                *ngIf="title.invalid && (title.dirty || title.touched) && title.errors?.['required']">You
+                                must add a title</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>输入任务内容</mat-label>
+                            <textarea matInput placeholder="Description" [(ngModel)]="Description" name="description"
+                                #description="ngModel" required></textarea>
+                            <mat-icon matSuffix>description</mat-icon>
+                            <mat-error
+                                *ngIf="description.invalid && (description.dirty || description.touched) && description.errors?.['required']">
+                                You must add a description.
+                            </mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <input matInput [min]="EarliestDate" [matDatepicker]="picker" name="datepicker"
+                                placeholder="Due date" #datepicker="ngModel" required [(ngModel)]="DueDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error
+                                *ngIf="datepicker.invalid && (datepicker.dirty || datepicker.touched)&&datepicker.errors?.['required']">
+                                You must select a due date.
+                            </mat-error>
+                        </mat-form-field>
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary">Save</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </form>
+</div>

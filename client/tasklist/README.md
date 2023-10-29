@@ -32,3 +32,6 @@ ng g c components/AddTask
 ng g c components/AllTasks
 ng g c components/OverdueTasks
 ```
+
+- 向页面组件添加内容
+首先创建AddTask组件

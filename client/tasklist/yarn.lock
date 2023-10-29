@@ -4595,6 +4595,11 @@ guess-parser@0.4.22:
   dependencies:
     "@wessberg/ts-evaluator" "0.0.27"
 
+guid-typescript@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.npmmirror.com/guid-typescript/-/guid-typescript-1.0.9.tgz#e35f77003535b0297ea08548f5ace6adb1480ddc"
+  integrity sha512-Y8T4vYhEfwJOTbouREvG+3XDsjr8E3kIr7uf+JZ0BYloFsttiHU0WfvANVsR7TxNUJa/WpCnw/Ino/p+DeBhBQ==
+
 handle-thing@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmmirror.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
