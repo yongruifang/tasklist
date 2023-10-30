@@ -1,7 +1,7 @@
-<div class="centerDiv" layout-fill layout="column" layout-align="center none">
-    <form name="form" (ngSubmit)="f.form.valid && Add()" #f="ngForm" style="height:50%">
-        <div layout="row" layout-align="center none" style="height: 100%">
-            <mat-card style="height: 100%">
+<div class="centerDiv" style="display:flex">
+    <form name="form" (ngSubmit)="f.form.valid && Add()" #f="ngForm">
+        <div layout="row" layout-align="center none">
+            <mat-card style="height: 100%; width: 100%">
                 <mat-card-title style="align-self: center;">添加待办事项</mat-card-title>
                 <mat-card-content>
                     <p>

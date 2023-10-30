@@ -25,32 +25,29 @@ export abstract class DataAccessBase<T extends mongoose.Document> {
     }
     Get(id: string): Promise<T> {
         return new Promise<T>((callback, error) => {
-            this.model.find({ 'Id': id }, (err: unknown, result: T) => {
-                if (err) {
-                    error(err);
-                }
-                callback(result);
-            });
+            // this.model.find({ 'Id': id }, (err: unknown, result: T) => {
+            //     if (err) {
+            //         error(err);
+            //     }
+            //     callback(result);
+            // });
+            return this.model.find({ 'Id': id }).exec()
         });
     }
     Remove(id: string): Promise<void> {
         return new Promise<void>((callback, error) => {
-            this.model.deleteOne({ 'Id': id }, (err: unknown) => {
-                if (err) {
-                    error(err);
-                }
-                callback();
-            });
+            return this.model.deleteOne({ 'Id': id });
         });
     }
     Update(id: string, item: T): Promise<boolean> {
         return new Promise<boolean>((callback, error) => {
-            this.model.updateOne({ 'Id': id }, { $set: item }, (err: unknown) => {
-                if (err) {
-                    error(err);
-                }
-                callback(true);
-            });
+            try {
+                const filter = { 'Id': id }
+                this.model.updateOne(filter, item as any)
+                callback(true)
+            } catch (err) {
+                error(err)
+            }
         });
     }
 }

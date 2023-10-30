@@ -1,76 +1,71 @@
-<mat-card class="tasks-card-layout">
-    <div>
-        <form name="form" (ngSubmit)="f.form.valid" #f="ngForm">
-            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-                <span fxFlex="80%">
-                    <div *ngIf="!InEdit;else editTitle">
-                        <span>{{Todo.Title}}</span>
-                    </div>
-                    <ng-template #editTitle>
-                        <mat-form-field>
-                            <input type="text" name="Title" matInput placeholder="Title" [(ngModel)]="Todo.Title"
-                                #title="ngModel" required />
-                        </mat-form-field>
-                        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-                            <div *ngIf="title.errors?.['required']">
-                                You must add a title.
-                            </div>
-                        </div>
-                    </ng-template>
-                </span>
-                <span fxFlex="10%">
-                    <button mat-icon-button (click)="Edit(true)" *ngIf="!InEdit">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                </span>
-                <span fxFlex="10%">
-                    <button mat-icon-button (click)="Delete()">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </span>
-            </mat-card-title>
-            <mat-card-content>
-                <div *ngIf="InEdit;else displayTemplate">
-                    <mat-form-field>
-                        <textarea matInput placeholder="Description" [(ngModel)]="Todo.Description" name="description"
-                            #description="ngModel" required></textarea>
-                    </mat-form-field>
-                    <div *ngIf="description.invalid && (description.dirty || description.touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="description.errors?.['required']">
-                            You must add a description.
-                        </div>
-                    </div>
-                    <mat-form-field>
-                        <input matInput name="duedate" [min]="EarliestDate" [matDatepicker]="picker"
-                            placeholder="Due date" [(ngModel)]="Todo.DueDate" #datepicker="ngModel" required>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                    <div *ngIf="datepicker.invalid && (datepicker.dirty || datepicker.touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="datepicker.errors?.['required']">
-                            You must select a due date.
-                        </div>
-                    </div>
+<mat-card class="tasks-card-layout" style="width:400px; height:350px;">
+    <form name="form" (ngSubmit)="f.form.valid" #f="ngForm"
+        style="display:flex; flex-direction: column; width:100%; height:100%">
+        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column"
+            style="padding-left:10px; padding-top:10px;flex-grow:1">
+            <span fxFlex="80%">
+                <div *ngIf="!InEdit;else editTitle">
+                    <span>{{Todo.Title}}</span>
                 </div>
-                <ng-template #displayTemplate>
-                    <p class="descriptionBlock">{{Todo.Description}}</p>
-                    <p>Due: {{Todo.DueDate | date}}</p>
-                    <div *ngIf="Todo.DaysCreated === 0;else olderTemplate">
-                        <p>This is a new task</p>
-                    </div>
-                    <ng-template #olderTemplate>
-                        <p>Created {{Todo.DaysCreated}} days ago</p>
-                    </ng-template>
+                <ng-template #editTitle>
+                    <mat-form-field appearance="outline">
+                        <input type="text" name="Title" matInput placeholder="Title" [(ngModel)]="Todo.Title"
+                            #title="ngModel" required />
+                        <mat-error
+                            *ngIf="title.invalid && (title.dirty || title.touched) && title.errors?.['required']">
+                            You must add a title.
+                        </mat-error>
+                    </mat-form-field>
+                    <br />
                 </ng-template>
-            </mat-card-content>
-            <mat-card-actions>
-                <span *ngIf="!Todo.Completed">
-                    <button mat-button (click)="Complete()">Complete</button>
-                </span>
-                <button *ngIf="InEdit" mat-button class="btn btn-primary" (click)="Save()">Save</button>
-            </mat-card-actions>
-        </form>
-    </div>
+            </span>
+            <span>
+                <button mat-icon-button color="primary" (click)="Edit(true)" *ngIf="!InEdit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </span>
+            <span>
+                <button mat-icon-button color="warn" (click)="Delete()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </span>
+        </mat-card-title>
+        <mat-card-content style="flex-grow:1">
+            <div *ngIf="InEdit;else displayTemplate">
+                <mat-form-field appearance="outline">
+                    <textarea matInput placeholder="Description" [(ngModel)]="Todo.Description" name="description"
+                        #description="ngModel" required></textarea>
+                    <mat-error
+                        *ngIf="description.invalid && (description.dirty || description.touched) && description.errors?.['required']">
+                        You must add a description.
+                    </mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <input matInput name="duedate" [min]="EarliestDate" [matDatepicker]="picker" placeholder="Due date"
+                        [(ngModel)]="Todo.DueDate" #datepicker="ngModel" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error
+                        *ngIf="datepicker.invalid && (datepicker.dirty || datepicker.touched) && datepicker.errors?.['required']">
+                        You must select a due date.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <ng-template #displayTemplate>
+                <p class="descriptionBlock">内容:{{Todo.Description}}</p>
+                <p>截止日期: {{Todo.DueDate | date}}</p>
+                <p *ngIf="Todo.DaysCreated === 0;else olderTemplate">This is a new task</p>
+                <ng-template #olderTemplate>
+                    <p>Created {{Todo.DaysCreated}} days ago</p>
+                </ng-template>
+            </ng-template>
+        </mat-card-content>
+        <mat-card-actions style="flex-grow:1">
+            <button *ngIf="!Todo.Completed" mat-raised-button (click)="Complete()" color="primary">Complete</button>
+            <button *ngIf="Todo.Completed" mat-raised-button (click)="Complete()" disabled>Completed!</button>
+            <button style="margin-left:5px;" *ngIf="InEdit" mat-raised-button color="primary" class="btn btn-primary"
+                (click)="Save()">Save</button>
+        </mat-card-actions>
+    </form>
 </mat-card>
