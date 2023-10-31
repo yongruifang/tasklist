@@ -1,0 +1,43 @@
+{
+  "api": {
+    "apolloapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "apolloserver"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "apolloserver": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_apolloserver_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "apolloserver"
+        }
+      ]
+    },
+    "AMPLIFY_function_apolloserver_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "apolloserver"
+        }
+      ]
+    }
+  }
+}

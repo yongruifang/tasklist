@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-lambdaserver-dev-164229-authRole",
+      "UnauthRoleArn": "arn:aws:iam::203879067623:role/amplify-lambdaserver-dev-164229-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::203879067623:role/amplify-lambdaserver-dev-164229-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-lambdaserver-dev-164229-deployment",
+      "UnauthRoleName": "amplify-lambdaserver-dev-164229-unauthRole",
+      "StackName": "amplify-lambdaserver-dev-164229",
+      "StackId": "arn:aws:cloudformation:us-east-1:203879067623:stack/amplify-lambdaserver-dev-164229/49283060-7700-11ee-9adc-12968e9df189",
+      "AmplifyAppId": "d35cey6cd4jo5x"
+    },
+    "categories": {
+      "function": {
+        "apolloserver": {
+          "deploymentBucketName": "amplify-lambdaserver-dev-164229-deployment",
+          "s3Key": "amplify-builds/apolloserver-50777746784a53656c59-build.zip"
+        }
+      },
+      "api": {
+        "apolloapi": {}
+      }
+    }
+  }
+}
