@@ -61,7 +61,7 @@ import { TodoCardComponent } from './components/todo-card/todo-card.component'
 export class AppModule {
   constructor(httpLink: HttpLink, apollo: Apollo) {
     apollo.create({
-      link: httpLink.create({ uri: 'http://localhost:3000' }),
+      link: httpLink.create({ uri: 'https://ph4lk07bwf.execute-api.us-east-1.amazonaws.com/dev/graphql' }),
       cache: new InMemoryCache() as any,
       defaultOptions: {
         watchQuery: {
