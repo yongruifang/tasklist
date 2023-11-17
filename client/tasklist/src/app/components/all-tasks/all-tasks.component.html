@@ -1,3 +1,7 @@
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="20px grid" fxLayoutAlign="left">
+    <!-- 如果onload is false, 显示正在等待 -->
+    <div *ngIf="!onload" fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+    </div>
     <atp-todo-card *ngFor="let todo of todos" [Todo]="todo" (deleted)="resubscribe($event)"></atp-todo-card>
 </div>

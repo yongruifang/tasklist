@@ -24,6 +24,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { AllTasksComponent } from './components/all-tasks/all-tasks.component';
 import { OverdueTasksComponent } from './components/overdue-tasks/overdue-tasks.component';
 import { TodoCardComponent } from './components/todo-card/todo-card.component'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -54,6 +55,7 @@ import { TodoCardComponent } from './components/todo-card/todo-card.component'
     MatInputModule,
     MatCardModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
